@@ -1,0 +1,286 @@
+Day 05 
+Topic: Create, insert table with declare
+	   Temporary Table and its scope
+	   Function
+	   Store Procedure
+	   Paginations
+	   Trigger
+	   Function vs Store Procedure
+	   Properties of Transaction
+	   Performance tunning
++ Create, insert table with declare
+	-ex: Declare @something table (
+			id int,
+			name varchar(30)
+		)
+		insert @something select employeeID, FirstName From Employees
+		Select * From @something // if execute this line alone; it is out of scope
++ Temp Table
+	-scope: local or global
+	-ex: Create Table #AnyTemp(
+			id int,
+			name varchar(30),
+			
+		)
+	-local scope: 
+		same life time as global; store into temporary table locally ,cannot access outside of current session
+		___ indicate which session create this temp table 
+		ex: Select * into #anytemp From Products 
+			Select * From #anytemp = Select * From Products
+		
+	-global:
+		same life time as local; store into temporary table globally,can access outside of current session, has ## compare to local with #
+		
+		ex: Select * into ##anytemp From Products 
+			Select * From ##anytemp = Select * From Products
+	-storage: 
+		Temp table and table varaiables are both store temporarily 
+		Temp table are meant for larger dataset while table varaiables are meant for small data set
+		Temp table can create indexes/constraint except foreign keys while table variables cannot
+		Temp are scope locally (#) and globally (##) while table varaiables are only scoped locally
++ Function:
+	-Function mostly uses for calculations
+	-Scalar-Values Returns multiple while Tables-Values Returns singular ?
+	-A function can call another function
+	-ex: Create Function GetTotal (@price money, @discount real, @quantity smallint)
+		 Returns Money //returns here is plural while below is singular
+		 as
+		 Begin
+			Declare @Revenue money
+			set @Revenue = @price *quantity * (1-@discount)
+			return @revenue
+		 End
+		 go
+		 //GetTotal(UnitPrice, Discount, Quantity) as user define function, need to assign dbo. fucntion-name
+		 Select UnitPrice, Discount, Quantity, dbo.GetTotal(UnitPrice, Discount, Quantity) "Total Revenue"
+		 From [Order Details]
+		 
+	-ex: Create Function ExpensiveProduct(@threshold money)
+		 Returns Table
+		 as
+		 Begin
+			return Select * From Products Where UnitPrice > @threshold
+		 End
+		 go
+		 
+		 Select * From dbo.ExpensiveProduct(100)
++ Procedure
+	-ex: Create Proc spHello
+		 as
+		 Begin
+			print 'Hello World from console'
+			Select * From Products
+			Select * From Supplier
+			print 'Finish'
+		 End
+		 
+		 exec spHello // execute store procedure
+	-ex: Create Proc SpAddNumbers
+		 @firstnum int, @secondnum int
+		 as
+		 Begin
+			print @firstnum + @secondnum
+		 End
+		 
+		 exec SpAddNumbers 10, 20 // print 30 on console
+	-ex: Create Proc spGetByCity
+		 @city varchar(30)
+		 as
+		 Begin
+			Select * From Employees
+			Where city = @city
+		 End
+		 
+		 exec spGetByCity 'London'
+	- out and return both use to receive value but
+	-out can be used for multiple values
+	-return can give back 1 int
+	-ex: Create Proc spGetEmpName
+		 @id int
+		 @ename varchar(30) out,
+		 @rowsaffected int out
+		 as
+		 Begin
+			Select @ename = FirstName From Employees Where EmployeeID = @id
+			Set @rowsaffected = @@ROWCOUNT // @@ROWCOUNT shows rows that are affected 
+		 End
+		 
+		 Declare @rName varchar(30)
+		 Declare @rowCounter into
+		 exec spGetEmpName 1, @rName out, @rowCounter out
+		 Select @rName, @rowCounter
+		 print @rName
+		 print @rowCounter
+	-Can only return int (important note)
+	-ex: Create proc ReturnExample
+		 as 
+		 Begin
+			select FirstName from Employees Where employeeId =1
+			Return @@RowCount // if this value diffrent from int -> errors 
+		 End
+		 exec @result = ReturnExample
++ Trigger: Special stored procedure that automatically fires when an event occurs (interview question)
+    -DMML Triggers
+	-DDl Triggers
+	-Logon Triggers
++ Function and Store Procedure
+	-Usage: sp is for DML statement while function mostly use for calculations
+	-Calling: sp uses exce/execute, while function require query as well as input parameter
+	-output: SP may or may not return output but function must return "Returns and return"
+	-SP can call functions but function cant call SP.
++ Paginations: divides a large dataset into smaller discrete pages
+	-Offset: how many rows will be skiped from the result set of a query
+	-Fetch: how many rows we want to select
+	
+	-ex: Select c.CustomerId, c.ContactName, c.City
+		 From Customers c
+		 Order By c.CustomerId
+		 Offset 10 Rows
+		 Fetch Next 10 rows only
+	
+	-ex: Create Function PaginationAsFunction(@pagenumber int, @rowofpage int)
+		 returns table 
+		 as 
+		 return 
+		 Select c.CustomerId, c.ContactName, c.City
+		 From Customers c
+		 Order By c.CustomerId
+		 Offset (@pageNumber -1) * @RowofPage Rows
+		 Fetch Next @rowofpage rows only
+		 
+		 Declare @MaxTablePage int
+		 Declare @rowofpage int = 10
+		 Declare @currentPageNum int =1
+		 Select @MaxTablePage = Count(*) From Customer
+		 Set @MaxTablePage = CEILING (cast(@MaxTablePage as Decimal)/cast(@rowofpage as decimal)) --ceiling (91/10) = 10
+		 while @currentPageNum < @MaxTablePage
+		 Begin
+			Select *
+			From dbo.PaginationAsFunction(@currentPageNum, @rowofpage)
+			set @currentPageNum = @currentPageNum + 1
+		 End
++ Properties of Transaction
+	-ACID means
+	-Atomicity:   Work is atomic
+	
+	-Consistancy: Whatever happen in the middle of transaction will not partially leave
+				  your databse in a half completed stated
+				  
+	-Isolation:   Two transactions will be seperate from each other by locking the resoure
+	
+	-Durability:  Once the transaction is made, the changes to the db will be permanaent
+	
+	-ex: use NorthWind
+		 Begin Transaction
+			Drop Table Student
+			Select * From Student
+			commit
+	-Concurrency issues: two transactions access same thing
+		1)Dirty read: Transcation 1 allow transcation 2 (t2) to read uncommited data and then t1 decides to roll back -> cause isolation level read uncommited issues
+		-ex: window 1:
+				--t1
+				Set transaction isolation level read uncommited(fix: commited)(uncommit: read uncommit data)
+				
+				Begin Transaction
+				Insert Into BobaShop Values (5, 'Eg',7,100)
+				Insert Into BobaShop Values (5, 'some tea',7,100)
+				
+				Create Table BobaShop(
+					id int,
+					ProductName varchar(30),
+					UnitPrice Money,
+					Quantity int
+				)
+				insert into BobaShop values
+				(1,'Tea',3,100),
+				(2,'Beer',99,99),
+				(3,'Matcha',5,5),
+			 window 2:
+				--t2
+				Set transaction isolation level read uncommited (fix: commited)(uncommit: read uncommit data)
+				Select * From BobaShop
+		=>Solve by isolation level read committed (until rollback or completed window 2 cannot read)
+		2) Lost update: T1 and T2 read and upadte at the same time, but T2 finish before T1 
+						=> T1 come back and changes the updates from t2 therefore t2 lose their update
+						Cause by isolation level read committed
+						Solve by isolation level repeatable read
+		-ex: window 1:
+				--t1
+				Set transaction isolation level read uncommited(fix: repeatable read) (uncommit: read uncommit data)
+				
+				Begin Transaction
+				declare @qty int
+				Select @qty = Quantity From BobaShop Where id =2
+				Set @qty = @qty -5
+				Waitfor delay  '00:00:10'
+				Update BobaShop Set Quantity = @qty Where id = 2
+				Commit
+				
+				Create Table BobaShop(
+					id int,
+					ProductName varchar(30),
+					UnitPrice Money,
+					Quantity int
+				)
+				insert BobaShop values
+				(1,'Tea',3,100),
+				(2,'Beer',99,99),
+				(3,'Matcha',5,5),
+			 window 2:
+				--t2
+				Set transaction isolation level read uncommited (fix: repeatable read) (uncommit: read uncommit data)
+				Begin Transaction
+				declare @qty int
+				Select @qty = Quantity From BobaShop Where id = 2
+				
+				set @qty = @qty -2
+				Update BobaShop set Quantity = @qty Where id = 2
+				
+				Commit
+				
+				=> Solve by use repeatable read, t2 cannot go through because it waits for other process which is t1
+		3) Nonrepeatable reads: t1 reads the same data twice while t2 is updating the data
+								cause by isolation level read commited
+								solve by isolation level repeatable read
+			Window 1	
+				--t1
+				Set transaction isolation level repeatable read 	
+				
+				Begin Transaction
+				declare @qty int
+				Select  Quantity From BobaShop Where id =1
+				
+				Waitfor delay  '00:00:10'
+				Select Quantity From BobaShop Where id =1
+			
+				Commit
+				
+				Create Table BobaShop(
+					id int,
+					ProductName varchar(30),
+					UnitPrice Money,
+					Quantity int
+				)
+				insert BobaShop values
+				(1,'Tea',3,100),
+				(2,'Beer',99,99),
+				(3,'Matcha',5,5),
+			 window 2:
+				--t2
+				Set transaction isolation level repeatable read 
+				Begin Transaction
+				
+				Update BobaShop set Quantity = 1000 Where id = 1
+				
+				Commit
+		4) Phantom read: T1 reads same data as T2 is updating data
+						 cause by isolation level repeatable read
+						 solve by isolation level serializable 
+						 
++Performance tunning
+	1 Look at execution plan
+	2 choose index wisely
+	3 avoid uncessary joins
+	4 avoid select *
+	5 Join to replace subquery
+	6 Derived table to avoid a lot of group by
