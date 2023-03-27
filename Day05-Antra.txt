@@ -4,7 +4,7 @@ Day 06
 +Delete and Trunctcate
 	-Truncate this is DDL (will reset identity) and Delete is DML (will not reset identity)
 	-Delete can be use to remove on or more records while truncate will remove all and cannot use with Where clause
-My visual studio got some problems so I take note with .txt today
+
 +solution vs project
 	solution: can use many project instead of changing file name
 +Standard support (18 months) Longterm (3 years)
@@ -35,3 +35,36 @@ public class Program {
 	
 	}
 }
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    public class Parameters
+    {
+        public int PassByValue(int a,int b) //stack
+        {
+            a = 100;
+            b = 200;
+            Console.WriteLine($"a ={a} and b ={b} with a + b  = {a+b}");
+            return a + b;
+        }
+        public int PassByRef(ref int a,ref int b) // heap
+        {
+            a = 100;
+            b = 200;
+            Console.WriteLine($"a ={a} and b ={b} with a + b  = {a + b}");
+            return a + b;
+        }
+        public void Para(int a, string str, params int[] arr) //must be put at last and 
+        {
+            //some code
+        }
+   
+    }
+}
+
