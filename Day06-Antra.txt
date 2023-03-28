@@ -1,0 +1,91 @@
+Day 07:
+	Sting builder
+	Enum
+	Garbage collector
+	OOPs
+	
+	.NET Framework when u code in C#; you use .NET
+	float 7 digit of precison 4 byte
+	double 15-16 digit of precison 8 byte
+	decimal 28-29 digit of precison 16 byte
+	List is a mutable array
+	
+	Take a look at enum
+	Casing
++Mutable and imutable
+	string str = "hello"
+	str = "awsda"
+	//str[5] = 'w' this is not allow
+	str = str + "a3" // new instance of string not change the string 
+	StringBuilder stringBuilder 
++String builder: (interview)	
+	StringBuilder stringBuilder  = new StringBuilder("Hello World");
+	
+	stringBuilder[0] = 'w' // make string mutable 
+	
++Garbage collector: (interview)
+	-atuomatic memory manager
+	-avoid leak memory
+	-Dont need to manually realease memory
+	-Allocation on heap
+	-There are some some generation if you want to mention 
++OOPs (encapsualation: propertis medthod access modifier 
+		iheritance :override
+	Encapsulation: 
+		-Access modifier: public private protected internal (interview)
+		-Properties: special methods let you assign values
+		ex: public class Employee 
+		{//old way
+			private int _id;
+			public int oldID
+			{
+				get{return id}
+				set
+				{
+					_id =value;
+				}
+			}
+			public int id {get;set;}
+		}
+		-Constructor: call to initialize and create the object of the class 
+			overload the constructor is possible (same name but diffrent parameter for diffrent functionality
+			//such as return type ,number of parameters 
+			cannot be overwritten and inherited 
+			By defaults derive class constructor will call to parameterless constructor 
+		public FullTime: Employee (inherit)
+		{
+			public FullTime(int id, string name, string email)
+			{
+				
+			}
+		}
+	Inheritance:
+
+		-Virtual function:
+			
+		setup override 
+			Setup virtual and abstract before override
+	Abtraction: hide the complexity 
+	-Abstract class (important):   
+			//Abstract class AC cannot be instantiated but concrete class can
+			//as long as there is a single abstract method in the class, the class must be abstract
+			//contain concrete and abstract
+			//can be use in abstract class
+			//does not have a body, body provide in derive class
+	Interface: only have declaration but no implemetaion 
+				has memember public by defaults
+				cannot be an instance of interface but can still use upcast
+				support multiple inheritance but no abstract class
+				cannot have constructor
+	Boxing and unboxing: wrap a value type into a reference type change from stack to heap and vice versa
+		int box = 0;
+		object ob = (Object)box; // store in heap
+		int unboxing  = ob;
+	Upcasting: converting an object of a derived class to an object of its base class. 
+			   derived class object is already a type of the base class
+	Factory design pattern 
+	Static: belong to class level -> it becomes available global instance to, we can access without making instance of ther classes 
+	public static MathHelper (int a, int b)
+	{
+		
+	}
