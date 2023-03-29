@@ -1,0 +1,9 @@
+Day 08
+	Extension medthod
+	List 
+	
++Static Constructor
+	-Activiate before the instance of object is created and only one
+	-Member of a class but cannot be inherit 
++
+	

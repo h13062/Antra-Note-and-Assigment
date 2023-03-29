@@ -52,6 +52,8 @@ Day 07:
 			//such as return type ,number of parameters 
 			cannot be overwritten and inherited 
 			By defaults derive class constructor will call to parameterless constructor 
+			Default constructor will be replace if parameters constructor are created
+			Constructor can be invoke NOT inherit
 		public FullTime: Employee (inherit)
 		{
 			public FullTime(int id, string name, string email)
