@@ -1,0 +1,146 @@
+Day 03 (question at the end and have 48 hours to respond HW-1)
++	''=string and "" = wildcards
+	ex UseNorthwind Select ProoductName + 'additional string inside' =>prodcut name additional string inside; " " will lead to errors.
+	Select ProoductName As PrdoName From Products Where ProoductName Like 'c%[i]' // start with C
++Alias
+	ex Select ProoductName As PrdoName From Products  or 
+	ex Select ProoductName [PrdoName] From Products
+	ex Select ProoductName "PrdoName" From Products
+	ex Select ProoductName  'PrdoName' From Products (not recommended)
+
++Execution order order
+	From/Join->Where->Group By ->Having-> Select-> Disntinct -> Order By
+	ex Select e.first + ' ' + e.last [FullName]
+		From Employees e
+		
++Local variables 
+	-Declare @(this sign indicate local variable) [type]
+		ex Declare @today DateTime
+		   Set @today = GetDate()
+		   Print @today
+	-Using server profiler -> higlight Declare @today DateTime
+	-go to separate block 
+	Variable are temporarty store 
+	-Print @@RowCount // count number of rows get affected by previous query clause
+		ex	Select * From Products
+			if @@RowCount > 50
+			Begin 
+				Print 'Hello'
+				Print 'World'
+			End
+			else
+			Begin
+				print 'logic wasnt right'
+			End
++Case (switch in SQl)
+	ex:Select Productid, SupplierId =case
+		when SupplierId =1 then 'hi'
+		when SupplierId =2 then 'hello'
+		else 'good bye'
+		end
+	  From Products
++Loops (only while loop in sql)
+	ex: Declare @countdown int
+		Set @countdown =5
+		while @countdown > =1
+		Begin
+			Print @countdown
+			Set @countdown = @countdown -1
+		End
++Is statement ( good to identify Null)
+	ex: Create Table Candidates(
+			Id int,
+			Name varchar(30)
+			Salary Money,
+			LunchPrice money
+		)
+		
+		Insert Into Candidates values
+		(1, 'Sarah', 3000,20) , (Null,Null,Null,Null) // this demonstarte you can include Null
++What is group by (important interview question)
+	-Need agrregate function  to do group by 
+	ex: Select Count(ProductName), UnitPrice ,SupplierId
+		From Products
+		Group By SupplierId, UnitPrice
+	
+	-Need include non agrregate to group by clause or it will fail (SupplierId, UnitPrice in this case)
++Having (must go with group by)
+	-Use to filter aggregate 
+	ex: Select Count(ProductName) CountProd ,SupplierId
+		From Products
+		Where UnitPrice < 20
+		Group By SupplierId
+		Having Count(ProductName) > 1 AND SupplierId > 10
+
++Union and Union All (interview question -diffrent between these two)
+	Check execution plan to see how much resoure does a query cost
+	-Need 2 queries
+	ex: Select First + ' ' + Last "FullName" //same type in select ast below which allow Union to work
+		From Employees
+		
+		Union All
+		
+		Select CompanyName
+		From Supplier
+
+	-Union all keep all duplicate and stack first and second result set on top of each other
+	-Union remove all duplicate and sort result
+	ex: Select First + ' ' + Last "FullName" ,Title
+		From Employees
+		
+		Union All
+		
+		Select CompanyName
+		From Supplier
+	-Same data type and number of column
++Top
+	ex: Select Top 5 ProductId, UnitPrice
+		From Products
+		Order By UnitPrice Desc // order descending 
+
++Subqueries 
+	ex: Select o.OrderDate, 
+	(Select e1.First From employee e1 
+		Where o.EmployeeId = e1.EmployeeId) First,
+	...
+	From Orders o
+	Where (Select ...)
+	Order By (Select...)
+	ex: Select * From Customers
+		Where ContactName Like 'A%'
+		
+		Declare @CityVar varchar(40)
+		Select @CityVar = city
+		From Customers
+		Where ContactName = 'Ana Trujillo'
+		Print @CityVar
+		
+		Select ContactName, City
+		From Customers
+		Where City in (Select City From Customeras Where ContactName = 'Ano Trujillo')
+	Interview: Subqueries vs joins
+				--Join can be used in From Clause while Subqueries can be use in other clauses
+				--There is optimizer for joins in sql server (faster)
+				--Correlated subqueries: subquery where inner query is dependant on outer query
+				--Correlated might be faster in some cases
+						ex: select c.contactname, Count(o.OrderId)
+							From Customers c Left join Orders o on c. customerId = o. customerId
+							Group By c.ContactName Asc // slower
+								
+							//this is faster than join because the sort on join cost more time
+							Select c.ContactName, (Select Count(o.OrderId) From Orders o Where o.customerId = c.customerId)
+							From Customers c
+							Order By 2 (2nd column in this case the second selct in select)
+							
++Constraints and Normalization( Primary key, Foreign key, Uniqe, Check, Default, Not Null)
+	Interview questions: What is constraints and Normalization ?
+	Normailization: reduce reduncny 
+	Interview questions: 3 normalization form.(3rd prioritize performance dont try to create more col when you can do those later in code)
+	Primary key: Cannot be null, one pk per table and clustered 
+	Unique key: multiple per table, unquie can be null, unclustered index 
++Integrity of DB
+	-1st Entity Integrity: Each table have primary key 
+	-2nd Domain Integrity: Relevant to domain information only 
+	-3rd Referential Integrity: Use Fk to connect one to another 
+	
+Interview:What is the relationship between integration and normailization  (level strict ?? need to figure out)		
