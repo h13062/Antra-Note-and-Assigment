@@ -1,0 +1,66 @@
+Leet 1:
+public class Solution
+    {
+        public int[] TwoSum(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length ; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if ((nums[i] + nums[j]) == target)
+                    {
+                        return new int[] { i, j };
+                    }
+                }
+            }
+            return null;
+        }
+    }
+Leet 9:
+
+public class Solution {
+    public bool IsPalindrome(int x) {
+        string k = x.ToString();        
+        
+        for(int i=0;i<k.Length/2;i++)   
+        {
+            if(k[i] != k[k.Length-1-i]) 
+            {
+                return false;           // if any char not the same, return false
+            }
+        }
+        return true;                    
+    }
+}
+
+Leet 217
+
+public class Solution {
+    public bool ContainsDuplicate(int[] nums) {
+        HashSet<int> hashSetValues = new HashSet<int>();
+        
+        for(int idx=0; idx<nums.Length; idx++){
+            if (hashSetValues.Contains(nums[idx])){
+                return true;
+            }
+            hashSetValues.Add(nums[idx]);            
+        }        
+        return false;
+    }
+}
+
+Leet 412
+
+public class Solution {
+    public IList<string> FizzBuzz(int n) {
+        IList<string> myList=new List<string>();
+        for (int i=1; i<=n; i++){
+            string addMe="";
+            if (i%3==0) addMe+="Fizz";
+            if (i%5==0) addMe+="Buzz";
+            if (i%5!=0 && i%3!=0) addMe=i.ToString();
+            myList.Add(addMe);
+        }
+        return myList;
+    }
+}
