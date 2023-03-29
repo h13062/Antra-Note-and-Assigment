@@ -1,0 +1,41 @@
+1. What type would you choose for the following “numbers”?
+A person’s telephone number : long int
+A person’s height: float
+A person’s age: short int
+A person’s gender (Male, Female, Prefer Not To Answer): Boolean
+A person’s salary: Money or Decimal
+A book’s ISBN: long int
+A book’s price: decimal
+A book’s shipping weight: decimal
+A country’s population:  long int
+The number of stars in the universe long long int
+The number of employees in each of the small or medium businesses in the
+United Kingdom (up to about 50,000 employees per business): long long int
+2. What are the difference between value type and reference type variables? 
+	+Value type store in stack and reference store in heap
+	+Value type copy its value while reference copy a reference of the type
+3. What happens when you divide an int variable by 0?
+	+This lead to runtime exception because it is undefined to divide to 0
+4. What happens when you divide a double variable by 0?
+	+There are 5 scenarios:
+		if double a/0 with a > 0.0 then infinity possitive 
+		if double a/0 with a < 0.0 the negative infinity
+		if double a/-0.0 with a > 0.0 then negative NaN
+		if double a/0.0 with a < 0.0 then infinity possitive 
+		if 0.0/0 -> NaN
+5. What happens when you overflow an int variable, that is, set it to a value beyond its
+range?
+	+ A wrap around will occur which lead to 2147483647 +1 = -2147483647
+6. What is the difference between x = y++; and x = ++y;?
+	+The term y++ indicates this is a prefix  which mean y value assign to x before increase
+	+The term ++y indicates this is a postfix  which mean y value assign to x after increase
+7. What is the difference between break, continue, and return when used inside a loop
+statement?
+	+Break: exist the loop immediately  and continue executing the code 
+	+Continue: skip the current iteration of the loop and move on to the next iteration
+	+Return: immediately exit the loop and return a value from the method in which the loop is contained
+8. What are the three parts of a for statement and which of them are required?
+	+Initialization: This part is executed once before the loop begins and is used to initialize the loop control variable.
+	+Condition: This part is a Boolean expression that is evaluated before each iteration of the loop
+	+Iteration: This part is executed at the end of each iteration of the loop and is used to update the loop control variable.
+LeetCode Questions Numbers to do: 1, 9, 217, 412
