@@ -18,30 +18,70 @@
 	+A readonly members are run-time constants that can be assigned a value either in the constructor or at the point of declaration
 	and  are used to define constant values that cannot be changed
 3. What does a constructor do?
+	 +call to initialize and create the object of the class 
+	 +overload the constructor is possible (same name but diffrent parameter for diffrent functionality
+			//such as return type ,number of parameters 
+	 +cannot be overwritten and inherited 
+	 +By defaults derive class constructor will call to parameterless constructor 
+	 +Default constructor will be replace if parameters constructor are created
+	 +Constructor can be invoke NOT inherit
 4. Why is the partial keyword useful?
+	+indicates that other parts of the class, struct, or interface can be defined in the namespace
 5. What is a tuple?
+	+C# tuple is a data structure that provides an easy way to represent a single set of data
 6. What does the C# record keyword do?
+	+define a reference type that provides built-in functionality for encapsulating data
 7. What does overloading and overriding mean?
+	+Overloading: same name, different parameters and returns, and within same class
+	+Overriding: same name, parameters and returns, invoke of function from another class 
 8. What is the difference between a field and a property?
+	+A field is a variable of any type that is declared directly in a class. 
+	+A property is a member that provides a flexible mechanism to read, write or compute the value of a private field {get, set}
 9. How do you make a method parameter optional?
+	Use overloading ,params and default values
 10. What is an interface and how is it different from abstract class?
+	Interface: only have declaration but no implemetaion 
+		   has memember public by defaults
+		   cannot be an instance of interface but can still use upcast
+		   support multiple inheritance but no abstract class
+		   cannot have constructor
+	An abstract class allows you to create functionality that subclasses can implement or override. 
+	An interface only allows you to define functionality, not implement it. 
 11. What accessibility level are members of an interface?
+	Public
 12. True/False. Polymorphism allows derived classes to provide different implementations
 of the same method.
+	True
 13. True/False. The override keyword is used to indicate that a method in a derived class is
 providing its own implementation of a method.
+	True
 14. True/False. The new keyword is used to indicate that a method in a derived class is
 providing its own implementation of a method.
-15. True/False. Abstract methods can be used in a normal (non-abstract) class. 16.
-True/False. Normal (non-abstract) methods can be used in an abstract class. 17. True/False.
-Derived classes can override methods that were virtual in the base class. 18. True/False.
-Derived classes can override methods that were abstract in the base class. 19. True/False.
-In a derived class, you can override a method that was neither virtual non abstract in the
+	True
+15. True/False. Abstract methods can be used in a normal (non-abstract) class. 
+	False
+16.True/False. Normal (non-abstract) methods can be used in an abstract class. 
+	True
+17. True/False.Derived classes can override methods that were virtual in the base class.
+	True
+18. True/False.Derived classes can override methods that were abstract in the base class. 
+	True
+19. True/False.In a derived class, you can override a method that was neither virtual non abstract in the
 base class.
+	False
 20. True/False. A class that implements an interface does not have to provide an
 implementation for all of the members of the interface.
+	False
 21. True/False. A class that implements an interface is allowed to have other members that
 aren’t defined in the interface.
+	True
 22. True/False. A class can have more than one base class.
+	False
 23. True/False. A class can implement more than one interface.What is meant by the terms managed resource and unmanaged resource in .NET
+	True
 24. What's the purpose of Garbage Collector in .NET?
+	Garbage collector: identify and discard those objects that are no longer needed by application
+		Different generations: 
+				Generation 0: youngest generation, contains newly created objects. Most objects are created and destroyed in this.
+				Generation 1: contains objects that have survived at least one garbage collection cycle. Object survive multiple cycles => prompted to higher generations
+				Generation 2: contains objects that survived multiple collection cycles. Long live and represent the core data structures of the application 
