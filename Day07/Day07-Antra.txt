@@ -1,9 +1,110 @@
 Day 08
 	Extension medthod
 	List 
-	
+	MathDelegate
 +Static Constructor
 	-Activiate before the instance of object is created and only one
 	-Member of a class but cannot be inherit 
-+
++ Extension methods:
+		The class containing extension method must be a static class
+		the extension method as a results is require to be a static methodThe 
+		The first parameter needs to have "this" to specify which type is being extended
+		This depends on design pattern 
+	ex:
+	namespace ConsoleAppD3
+	public class Program 
+	{
+		/
+		public static class ExtentionMethod
+		{
+			public static void IsEven(this int x)
+			{
+				if ( x % 2 == 0 ) return;
+			}
+			public static void IsLengthEven(this string str)
+			{
+				if((str.Length + additionalLetter.Length)% 2 == 0) return true;
+				return false;
+			}
+		}
+	}
+	public class Student{
+		//some methods
+		public Student(int id, string name)
+		{
+			this.Id = id; //the word this is thwe extension for this case 
+			this.name = name;
+		}
+	}
+
++Generic collection <T>
+	Create singular function to check, stop repeating your self
+	And you target the specific class 
+	ex: public class Comparer<T> 
+		{
+			public bool CheckEquality (int a, int b)
+			{
+				return a== b;
+			}
+			public bool CheckEquality(float a, float b)
+			{
+				return a == b;
+			}
+			//instead
+			public bool CheckEquality( T a, T b)
+			{
+				return a ==b;
+			}
+		}
+	Real case scenario
+	public interface IRepository<T> 
+	{
+		public void Add (T entity);
+		public void GetAll (T entity);
+		public void Update (T entity);
+		public void DeleteById (int id);
+		
+	}
++Exception handling
+	-It did not crash the program 
+	ex:
+	try 
+	{
+		int input = Convert.ToInt32(Console.ReadLine());
+		int max = int32.MaxValue -10;
+		max = check(max + 10);
+	}
+	catch(Exception ex)
+	{
+		//catch all exceptions
+	}
+	catch(FormatException ex)
+	{
+		Console.WriteLine("You done mess up" + ex);
+		
+	}
+	catch(OverFlowException ex)
+	{
+		Console.WriteLine("You done mess up overload" + ex);
+	}
+	finally 
+	{
+		//always run after catch or try is over
+		//get rid of unmange code
+	}
 	
+	public class AgeException : Exception
+	{
+		public overdride  string "Out of range for age"
+	}
++Delegate
+	//Delegate are object that take in a function pointer as a value
+	//are type safe 
+	public delegate void MathDelegate (int a, int b)
+	{
+	}
+	
+	public void multiply(MathDelegate math, int a, int b)
+	{
+		Console.WriteLine(math(a,b));
+	}
