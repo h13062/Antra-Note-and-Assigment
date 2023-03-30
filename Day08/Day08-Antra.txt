@@ -1,0 +1,69 @@
+Day 09
+
++Annonymous class and fucntion  
+	Annonymous class: object you can create without previous template and implementation  unlike class
+	Annonymous function: function  you can create without previous template and implementation
+	
+	Generic is type safe while non generic is not type safe 
+	
++BuildInDelegate
+	+Action (void), predicate (return bool) and func (return last value within specification)
+	ex: public UsingFunctionPoint(int a)
+		{
+			Console.Writeline(a);
+		}
+		//Action take in any numbers of inputs of different specified type but return void
+		
+		public void ActionExample()
+		{
+			Action<int> action1 = UsingFunctionPoint;
+			Action<int> action2 = intParameter =>
+			{
+				int a = 0;
+				int b = 1;
+				Console.Writeline(a +b *intParameter);
+			};
+			action2(100);
+			
+		}
+		//predicate take in any numbers of inputs of different specified type but return bool
+		public void PredicateExample()
+		{
+			Predicate<string> isLonger = (str, anyNum) => 
+			{
+				if (Str.length > 10) 
+					return true
+				else 
+					return false 
+			};
+		}
+		//Func built in delegate that takes up to 16 parameters and an output of specified type
++Foreach loop
+	List<int> list = new List<int>();
+	foreach(var item in list)
+	{
+		Console.Writeline(item)
+	
+	}
+	Ienumerator allow foreach loop 
+	enumarator get current location of index in a collection 
++LINQ	
+	+In memory object: data/memory that is storered in Collection
+	+List dictionary. Arrays can use Linq because the output of Linq is Ienumerable
+	+ Inmemory Sources to objects
+	+ To enitites: processing data stored in External sources /database
+	+ To XML: old and not common practice 
++ORM and LINQ 
+	+ a technique used in creating a "bridge" between 
+	object-oriented programs and relational databases
+	+ Connect linq to sql server 
+	+Map is the conversion of object type
+	ex:
+		var result = Employees.Select(x => x = EmployeeID == 1)
+		var result Employees.Where(x => x.EmployeeID == 1).Select(*)
+		Employees.EmployeeID
+		 
+		result.dump();
+		
++SRP : single repository of Principle L one class should have one responsibilty over something
+		

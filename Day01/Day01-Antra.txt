@@ -1,8 +1,8 @@
 SQL Day 02
 +Relationship
-	-One to one
-	-One to many
-	-Many to many
+	-One to one: 
+	-One to many:
+	-Many to many: hard to find relation between table, need an unction table  
 +SQL: Structure Query Language 
 +RDBMS:
 +Using SSMS to query 
