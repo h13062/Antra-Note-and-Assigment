@@ -30,6 +30,7 @@ Day 08
 	}
 	public class Student{
 		//some methods
+		
 		public Student(int id, string name)
 		{
 			this.Id = id; //the word this is thwe extension for this case 
@@ -38,6 +39,8 @@ Day 08
 	}
 
 +Generic collection <T>
+	Generic type: Generic means the general form, not specific. 
+				  In C#, generic means not specific to a particular data type
 	Create singular function to check, stop repeating your self
 	And you target the specific class 
 	ex: public class Comparer<T> 
@@ -99,7 +102,7 @@ Day 08
 	}
 +Delegate
 	//Delegate are object that take in a function pointer as a value
-	//are type safe 
+	//are type safe for function because it must have the same function signature as the delegate.
 	public delegate void MathDelegate (int a, int b)
 	{
 	}

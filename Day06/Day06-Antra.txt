@@ -31,6 +31,13 @@ Day 07:
 	-There are some some generation if you want to mention 
 +OOPs (encapsualation: propertis medthod access modifier 
 		iheritance :override
+	Polymorphism:
+		In summary, virtual and abstract methods are used for polymorphism, 
+		but they have different purposes. 
+		Virtual methods have an implementation in the base class 
+		that can be optionally overridden in the derived class, 
+		while abstract methods have no implementation in the base class 
+		and must be overridden in the derived class.
 	Encapsulation: 
 		-Access modifier: public private protected internal (interview)
 		-Properties: special methods let you assign values
@@ -74,7 +81,7 @@ Day 07:
 			//contain concrete and abstract
 			//can be use in abstract class
 			//does not have a body, body provide in derive class
-	Interface: only have declaration but no implemetaion 
+	-Interface: only have declaration but no implemetaion 
 				has memember public by defaults
 				cannot be an instance of interface but can still use upcast
 				support multiple inheritance but no abstract class
