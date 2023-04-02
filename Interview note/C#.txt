@@ -1,0 +1,137 @@
+Jonh C# na 
+1. reference type vs. value type
+	Value type vs Reference type 	
+ 	Value type: 
+ - Directly contain their values. 
+            - When we create a variable, the actual value is stored in the variable.
+            - Pass by value => pass a value type to a method or assign it to another variable-a copy of the value is made 
+
+           Reference type: 
+            - Hold a reference to an object in memory
+            - Include: classes, arrays, and delegates
+            - When we create a variable, only reference to the object is stored
+            - Pass by reference => the reference is copied not the object 
+
+
+2. boxing vs. unboxing
+Boxing:
+	- Convert a value type to a reference type by encapsulation the value type inside an object on the heap. 
+          - Value type is assigned to an object variable or passed as an object parameter to a method
+Unboxing:
+          - Extracting the value of a value type from object on the heap by casting the object “(int)obj”
+
+
+3. abstract class vs. interface (need fix)
+	-Abstract class (important):   
+			//Abstract class AC cannot be instantiated but concrete class can
+			//as long as there is a single abstract method in the class, the class must be abstract
+			//contain concrete and abstract
+			//can be use in abstract class
+			//does not have a body, body provide in derive class
+	-Interface: only have declaration but no implementation 
+				has member public by defaults
+				cannot be an instance of interface but can still use upcast
+				support multiple inheritance but no abstract class
+				cannot have constructor
+
+
+4. Overriding vs. Overloading
+	Overloading: same name, different parameters and returns, and within same class   Overriding: same name, parameters and returns, invoke of function from another class 
+5. What does constructor do in a class? Can it be overridden? Can it be overloaded?
+Constructor  is call to initialize and create object which is an instance of class. 
+Constructor can be overloaded by changing the number of parameter in the parentheses; however, it can not be inherit and overridden
+6. What does static keyword do in C#?
+A static declares mean the variable that member belongs to class not instance of class. There are static methods, static field, static constructor and static class.
+Static fields: A static field is a variable that is associated with a class rather than an instance of the class. It can be accessed without creating an instance of the class, and the value of the field is shared across all instances of the class.
+Static methods: A static method is a method that is associated with a class rather than an instance of the class. It can be called without creating an instance of the class, and it can only access static members of the class.
+Static classes: A static class is a class that can only contain static members. It cannot be instantiated, and all members of the class must be accessed using the class name.
+Static constructors: A static constructor is a special method that is used to initialize static members of a class. It is called automatically when the class is first used, and it cannot be called manually.
+
+
+	
+7. Difference between Virtual method and Abstract method?
+Virtual and abstract methods are used for polymorphism, 
+		but they have different purposes. 
+		+Virtual methods have an implementation in the base class 
+		that can be optionally overridden in the derived class, 
+		+Abstract methods have no implementation in the base class 
+		and must be overridden in the derived class.
+
+
+8. what are delegates in C#, what are different types of built-in delegates
+In C#, a delegate is a type safe and object oriented that represents a reference to a method with a specific signature.
+There are three types of built-in delegates in C#:
+Action, Func and Predicate: 
++Action take in any numbers of inputs of different specified type but return void
++Predicate take in any numbers of inputs of different specified type but return bool
++Func built in delegate that takes up to 16 parameters and an output of specified type
+9. Explain different access modifiers in C#
+
+10. What is the extension method in C#? examples of built-in extension methods? How to create custom extension methods?
++Extension method is a static method that allows developers to add new methods to existing types without modifying the original source code of the type
++ Extension methods:
+		The class containing extension method must be a static class
+		the extension method as a results is require to be a static method
+		The first parameter needs to have "this" to specify which type is being extended
+	
+11. Ref vs. Out vs. Params
+	Ref: indicate that variable will be pass by reference in the method
+	out : same as ref but this allow method to return more than one value
+  	Params: specify a method parameter that takes a variable number of arguments
+12. Pass by reference vs. Pass by Value
+Value type: ‘
+- Directly contain their values. 
+ - When we create a variable, the actual value is stored in the variable.
+  - Pass by value => pass a value type to a method or assign it to another variable-a copy of the value is made 
+Reference type: 
+- Hold a reference to an object in memory 
+- Include: classes, arrays, and delegates
+- When we create a variable, only reference to the object is stored
+ - Pass by reference => the reference is copied not the object 
+
+
+
+
+13. array vs. arrayList
++Array requires a fix size while list allows dynamic size 
++Array is type safe (access right memory location )while list is not 
++Array is faster than list because list contains boxing and unboxing 
+14. example of encapsulation, where to implement: This will be explain when present encapsulation OOPS concepts
+	+Encapsulation is the process of binding data and methods that operate on that data, into a single unit. In .NET, this can be achieved through classes, access modifiers and properties
+
+15. how do you handle exceptions? Syntax.
+try {
+	//some broken code
+} catch (Exception ex) {
+Console.Writlien(“Error: “, ex);
+}
+Optional
+Finally{
+//always run after catch or try is over
+		//get rid of unmanaged code
+}
+Custom 
+public class AgeException : Exception
+	{
+		public overdride  string "Out of range for age"
+	}
+
+
+16. what is generic, syntax to define 
+Generic means the general form, not specific. 
+ In C#, generic means not specific to a particular data type
+Create singular function to check, stop repeating your self
+public interface IRepository<T> 
+	{
+		public void Add (T entity);
+		public void GetAll (T entity);
+		public void Update (T entity);
+		public void DeleteById (int id);
+		
+	}
+	What is ienumarable C#
+	What is stringbuilder vs string
+
+
+
+

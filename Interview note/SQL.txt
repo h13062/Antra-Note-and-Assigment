@@ -1,0 +1,160 @@
+KimChi Stew SQL (Structure Query Language) 
+	1.  	What is index; types of indices; pros and cons (how to set index)
+In SQL, an index is is a data structure  which provide quick way to look up a database on one or more columns. Like referring information by knowing page number
+Indices include clustered index and non-clustered index
+Clustered indexes: sort one by one (binary search to find values), provide cluster scan
+Unclustered indexes:  store in hash table, provide uncluster scan
+Cons: DML command gets slow because each indexes are given value
+Pro: Query faster (like select), perform cluster scan (faster than table scan)
+2.  	What's the difference between Primary key (Implement the relationship between 2 tables) and Unique constraint?
+a. 	Primary is limited to one, give clustered index by default   and cannot be null
+b. 	Unique key can have many, give unclustered index and can be null
+3. Tell me about check constraint
+	Each columns in Database might have criteria that need to be check before performing insert or updated. EX: year int check( year Between 10 and 1000)
+Common case: 
+	Check input validations: prevent incorrect input
+	Restrict input values: maintain consistency 
+
+4. Difference between temp table and table variable (Important)
+Temp table and table variables are both store temporarily 
+Temp table are meant for larger dataset while table variables are meant for small data set
+Temp table can create indexes/constraint except foreign keys while table variables cannot
+Temp are scope locally (#) and globally (##) while table variables are only scoped   locally
+
+5. Difference between WHERE and HAVING
+WHERE filters row based on condition applied to individual columns while HAVINGfilter group based on the condition of aggregated data 
+WHERE used with SELECT, UPDATE and DELETE while HAVING used with SELECT and must be used together with GROUP BY
+WHERE applies before grouping and aggregation while HAVING applies after grouping and aggregation
+6. Difference between RANK() and DenseRank() — value gap (Important)
+	They must be used in window function (Window functions applies aggregate and ranking functions over a particular window)
+	EX: Select c.ContactName, c.Country, Count(o.OrderID) NumofOrd
+	Rank() Over(Partition By c.Country Order By Count(o.OrderID)) as "Rank"
+
+-Rank: when ranking, jump if there is a tiebreaker, have gaps (113)
+-Dense rank: number don't jump on ties no gaps (112)
+-Row_Number: just counter by the row number
+
+7. COUNT(*) vs. COUNT(colName)
+COUNT(*) returns the total number of rows in a table or a result set including null row.
+COUNT(colName) returns the number of non-null values in a specific column (null row will be exclude).
+8. What's the difference between left join and inner join? JOIN and Subquery, which one has a
+better performance, why? (Important)
++Left Join Vs Inner Joins:
+Left Join: returns all the rows from the left table and the matching rows from the right table. Return null if having no match from the right
+Inner Joins: returns only the matching and return null if there is not match
+Left Join is slower than Inner Join because Inner return only the matching while left are prefer if you want to to include all the rows from one table.
++JOIN and Subquery:
+--Join can be used in From Clause while Subqueries can be use in other clauses
+--There is optimizer for joins in sql server (faster)
+
+
+						
+9. What is correlated subquery
+--Correlated subqueries: subquery where inner query is dependant on outer query
+--Correlated might be faster in some cases compare to JOINS
+10. What is a CTE, why do we need CTE? (Important)
+CTE (comment table expression define using a WITH clause) store in temporary database and will be delete shortly It means to simplify complex SQL statement to a readable chunks. It contains CTE and Recursive CTE (this must have UNION into it)
+11. What does SQL Profiler do?
+captures and analyzes SQL Server events
+monitor and troubleshoot SQL Server activity by collecting information about the queries that are executed against the database, as well as other database-related events.
+
+12. What is SQL injection, how to avoid SQL injection?
+Insert malicious SQL code into a web application's input fields, causing the application to execute unintended SQL commands
+Make sure parameterize you values and input validation
+13. Difference between SP and user defined function? When to use SP when to use function?
+Function and Store Procedure
+-Usage: sp is for DML statement while function mostly use for calculations
+-Calling: sp uses exce/execute, while function require query as well as input parameter
+-output: SP may or may not return output but function must return "Returns and return"
+-SP can call functions but function cant call SP.
+
+14. Criteria of Union and Union all? Difference between UNION and UNION ALL
+Both need 2 queries with same data type and number of columns
+Union all keep all duplicate and stack first and second result set on top of each other
+Union remove all duplicate and sort result
+15. Steps you take to improve SQL Queries (Important)
+1 Look at execution plan
+2 choose index wisely
+3 avoid unnecessary joins
+4 avoid select *
+5 Join to replace subquery
+6 Derived table to avoid a lot of group by
+
+16. concurrency problem in transaction (Important)
+Concurrency issues: two transactions access same thing
+There are 4 cases with solutions:
+1)Dirty read: Transaction 1 allow transaction 2 (t2) to read uncommitted data and then t1 decides to roll back -> cause isolation level read uncommitted issues
+=>Solve by isolation level read committed (until rollback or completed window 2 cannot read)
+2) Lost update: T1 and T2 read and update at the same time, but T2 finish before T1 => something might be loss 
+=> T1 come back and changes the updates from t2 therefore t2 lose their update
+=> Solve by use repeatable read, t2 cannot go through because it waits for other process which is t1
+3) Nonrepeatable reads: t1 reads the same data twice while t2 is updating the data ->cause by isolation level read committed
+=>Solve by isolation level repeatable read
+4) Phantom read : T1 reads same data as T2 is updating data cause by isolation level repeatable read
+=>Solve by isolation level serializable 
+
+
+17. what is deadlock, how to prevent
+Deadlock is a situation in a database where two or more transactions are waiting for each other to release resources, causing a circular dependency that prevents any of the transactions from proceeding
+Prevent: transactions can be designed to acquire resources in a consistent order, and timeouts can be set to automatically release resources if a transaction takes too long, and SQL Server’s deadlock detection 
+
+18. what is normalization(3 forms), 1NF - BCNF, benefits using normalization (Important)
+Normalization is a process of organizing data in a database to reduce redundancy and dependency
+Dividing a large table into smaller tables and defining relationships between them, to improve data integrity, reduce data duplication, and improve data consistency.\
+Benefits
+Improved data integrity: Normalization helps to eliminate data duplication and redundancy, which can lead to inconsistencies and errors in data.
+Reduced data storage requirements: By eliminating data duplication and redundancy, normalization helps to reduce the amount of storage space required for data.
+Improved query performance: Normalization allows for more efficient indexing and querying of data, which can lead to faster query performance.
+Easier maintenance: Normalization makes it easier to maintain the database by reducing the amount of redundant data, simplifying the database structure, and making it easier to update data.
+Form of Normalization 
+First Normal Form (1NF): For a table to be in the first normal form, it must meet the following criteria:
+a single cell must not hold more than one value (atomicity)
+there must be a primary key for identification
+no duplicated rows or columns
+each column must have only one value for each row in the table
+Second Normal Form (2NF): A table is in 2NF if it is in 1NF and each non-key column in the table is dependent on the entire primary key.
+Third Normal Form (3NF): A table is in 3NF if it is in 2NF and there is no transitive dependency between non-key columns.
+
+19. what are the system defined databases? (important)
+	+Master: Hold all configuration and backup databases
+	+Model (Template db): use as a reference for other db
+	+Tempdb: store temporary objects such as stor e procedures and temporary table
+	+Mssql sytem Resource (this is hidden): service that create - do maintainance and check on something - more for automation
+	+User Database: 
+
+20. composite key: composite key is a combination of two or more columns that uniquely identifies each row in the table. Instead of using a single column as the primary key, a composite key uses a combination of two or more columns to create a unique identifier
+21. candidate key: a candidate key is a column or a combination of columns that can uniquely identify each row in the table. In other words, a candidate key is a set of one or more columns that can be used as a primary key for the table.
+22. DDL vs. DML (Important)
+DML (Data Manipulation Language) : manipulate data within a database. It includes statements such as SELECT, INSERT, UPDATE, and DELETE to modify data in database
+DDL (Data Definition Language):is used to define and modify the structure of a database. It includes statements such as CREATE, ALTER, and DROP to modify database objects like table and index. Basically, it movies structure 
+23. ACID property (Important)
+ACID are properties of transaction
+ACID means
+	-Atomicity: Entire transaction occur at the same time 
+	-Consistency: The database must be consistent before and after transaction
+	-Isolation:   Every transactions occur independently from each other
+	-Durability:  A change of a successful transaction will always occur even with system failure 
+24. table scan vs. index scan
+A table scan involves examining every row in the table to find the relevant data; this can be slow and resource-intensive, especially for large tables.
+An index scan involves using an index to find the relevant data instead of entire database, faster and more efficient than a table scan, especially for large tables
+25. Difference between Union and JOIN- Union and Union All (Important)
+Both need 2 queries with same data type and number of columns
+Union all keep all duplicate and stack first and second result set on top of each other
+Union remove all duplicate and sort result
+26. What are constraints and Normalization ?
+27. What is the relationship between integration and normalization (Important)
+Integration involves combining data from multiple sources into a single database or system, while normalization involves organizing data within a single database to reduce redundancy and dependency
+Normalization is often a prerequisite for effective integration, as it ensures that the data is consistent and free of duplication.
+
+28. Subqueries vs joins
++JOIN and Subquery:
+--Join can be used in From Clause while Subqueries can be use in other clauses
+--There is optimizer for joins in sql server (faster)
+29. Trigger: (important)
+Special stored procedure that automatically fires when an event occurs
+30 What is Group By (Important)
+Statement groups rows that have the same values into summary rows
+Often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns
+31 +Delete and Truncate
+	-Truncate this is DDL (will reset identity) and Delete is DML (will not reset identity)
+	-Delete can be use to remove on or more records while truncate will remove all and    cannot use with Where clause
