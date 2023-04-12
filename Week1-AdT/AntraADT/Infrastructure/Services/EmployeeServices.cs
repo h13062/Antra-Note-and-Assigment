@@ -1,4 +1,5 @@
 ﻿using ApllicationCore.Entities;
+using ApllicationCore.Services;
 using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class EmployeeServices
+    public class EmployeeServices : IEmployeeServices
     {
         EmployeeRepository employeeRepository;
         public EmployeeServices()

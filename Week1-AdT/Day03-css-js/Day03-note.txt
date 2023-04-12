@@ -1,5 +1,5 @@
 Day03:
-CSS and javascript:
+CSS :
 	flex: change the screen with size- dynamic 
 	grid: tabular format with each row can be adjusted 
 	@media query: being dynamic with CSS if screen change, then the page will move together 
@@ -9,3 +9,26 @@ CSS and javascript:
 	css specificty
 	css boxmodel
 	css selectors
+	
+Javascript:
+	Cookies: live on browser
+	
+SOLID Principles:
+	Single responsibilty Principle:
+    States that a class should do one thing
+    if it does more than one thing, consider seperating the functionality to another section of code
+    seperation of concerns per file
+	
+Open for extension closed for modification 
+        can use upcasting to create an object of an interface that allow diffrent functionality.
+        By doing so we are opening for extension by creating new child object that can be put inside a parent class
+		
+Interface Segregation principles:
+    when there is an interface that has some properties that does not apply to some of the classes, use multiple interfaces
+    to split up the interface into smaller ones, This allows for more flexibilty
+	
+Lishkovs Substitution Principle
+    A parent having 2 subclssed can be interchangeable with both classes without causing error or passing new exceptions
+	
+prepare question for asynchronous
+question on C# css
