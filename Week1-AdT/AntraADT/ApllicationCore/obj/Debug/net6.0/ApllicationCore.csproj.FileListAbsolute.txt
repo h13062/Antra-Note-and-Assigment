@@ -1,0 +1,12 @@
+D:\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.deps.json
+D:\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.dll
+D:\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.pdb
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.csproj.AssemblyReference.cache
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.AssemblyInfoInputs.cache
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.AssemblyInfo.cs
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.csproj.CoreCompileInputs.cache
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.dll
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\refint\ApllicationCore.dll
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.pdb
+D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ref\ApllicationCore.dll
