@@ -18,10 +18,7 @@ namespace Infrastructure.Repositories
         {
             _dbContext = new DapperDbContext(); //connection to database
         }
-        public int Delete(Employees obj)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public int DeleteById(int id)
         {
@@ -33,12 +30,14 @@ namespace Infrastructure.Repositories
 
         public IEnumerable<Employees> GetAll()
         {
-            throw new NotImplementedException();
+            IDbConnection conn = _dbContext.GetConnection();
+            return conn.Query<Employees>("Select Id, FirstName,LastName,Salary,DeptId from Employees ");
         }
 
         public Employees GetById(int id)
         {
-            throw new NotImplementedException();
+            IDbConnection conn = _dbContext.GetConnection();
+            return conn.QuerySingleOrDefault<Employees>("Select Id, FirstName,LastName,Salary,DeptId from Employees Where Id = @Id", new { Id = id });
         }
 
         public int Insert(Employees obj)

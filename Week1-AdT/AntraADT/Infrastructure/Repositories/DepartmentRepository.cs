@@ -30,7 +30,8 @@ namespace Infrastructure.Repositories
 
         public IEnumerable<Departments> GetAll()
         {
-            throw new NotImplementedException();
+            IDbConnection conn = _dbContext.GetConnection();
+            return conn.Query<Departments>("Select Id, DeptName, Location from Departments ");
         }
 
         public Departments GetById(int id)

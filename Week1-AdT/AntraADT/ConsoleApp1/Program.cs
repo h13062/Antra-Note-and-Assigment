@@ -11,8 +11,11 @@ public class Program
     public static void Main()
     {
         DepartmentServices d = new DepartmentServices();
-        d.AddDepartment();
-        d.DeleteDepartment();
+        //d.AddDepartment();
+        //d.DeleteDepartment();
+        d.GetAllDepartments();
         EmployeeServices e = new EmployeeServices();
+        //e.AddEmployee();
+        //e.DeleteEmployee();
     }
 }

@@ -24,6 +24,8 @@ namespace Infrastructure.Services
             e.LastName = Console.ReadLine();
             Console.Write("Enter the salary: ");
             e.Salary = decimal.Parse(Console.ReadLine());
+            Console.Write("Enter the department ID: ");
+            e.DeptId = Convert.ToInt32(Console.ReadLine());
             if (employeeRepository.Insert(e) > 0)
             {
                 Console.WriteLine("Sucessful insert for Employee: ");
