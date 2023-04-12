@@ -35,7 +35,7 @@ namespace Infrastructure.Services
         }
         public void DeleteDepartment()
         {
-            Console.Write("");
+            Console.Write("Enter the Id of Department to delete: ");
             int id = Convert.ToInt32(Console.ReadLine());
             departmentRepository.DeleteById(id);
         }

@@ -12,6 +12,7 @@ public class Program
     {
         DepartmentServices d = new DepartmentServices();
         d.AddDepartment();
+        d.DeleteDepartment();
         EmployeeServices e = new EmployeeServices();
     }
 }

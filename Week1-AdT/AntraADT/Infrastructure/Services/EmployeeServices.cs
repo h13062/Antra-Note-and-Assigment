@@ -35,5 +35,11 @@ namespace Infrastructure.Services
 
 
         }
+        public void DeleteEmployee()
+        {
+            Console.Write("Enter the Id of Employee to delete: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            employeeRepository.DeleteById(id);
+        }
     }
 }

@@ -25,7 +25,10 @@ namespace Infrastructure.Repositories
 
         public int DeleteById(int id)
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = _dbContext.GetConnection())
+            {
+                return conn.Execute("Delete From Employees Where Id = @Id", new { Id = id });
+            }
         }
 
         public IEnumerable<Employees> GetAll()
