@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApllicationCore.Contracts.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
         int Insert(T obj);
         int Update(T obj);

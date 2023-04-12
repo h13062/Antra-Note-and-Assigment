@@ -19,6 +19,18 @@ namespace Infrastructure.Services
         public void AddDepartment()
         {
             Departments d = new Departments();
+            Console.Write("Enter name of Department: ");
+            d.DeptName = Console.ReadLine();
+            Console.Write("Enter name of Department's Location : ");
+            d.Location = Console.ReadLine();
+            if (departmentRepository.Insert(d) > 0)
+            {
+                Console.WriteLine("Sucessful insert for Department: ");
+            }
+            else
+            {
+                Console.WriteLine("Error insert for Department: ");
+            }
 
         }
         public void DeleteDepartment()

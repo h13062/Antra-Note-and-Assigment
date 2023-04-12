@@ -42,13 +42,13 @@ namespace Infrastructure.Repositories
         public int Insert(Departments obj)
         {
             IDbConnection conn = _dbContext.GetConnection();
-            return conn.Execute("Insert Into Department Values(@DeptName,@Loc)",obj);
+            return conn.Execute("Insert Into Departments Values(@DeptName,@Location)", obj);
         }
 
         public int Update(Departments obj)
         {
             IDbConnection conn = _dbContext.GetConnection();
-            return conn.Execute("Update Department set DeptName = @DeptName, Location = @location Where Id = @Id", obj);
+            return conn.Execute("Update Departments set DeptName = @DeptName, Location = @location Where Id = @Id", obj);
         }
     }
 }

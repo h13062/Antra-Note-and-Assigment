@@ -10,6 +10,8 @@ public class Program
 {
     public static void Main()
     {
-        DepartmentServices e = new DepartmentServices();
+        DepartmentServices d = new DepartmentServices();
+        d.AddDepartment();
+        EmployeeServices e = new EmployeeServices();
     }
 }

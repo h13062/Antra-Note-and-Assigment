@@ -504,11 +504,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AntraADT\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\AntraADT\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\bgh15\\.nuget\\packages\\",
-      "outputPath": "D:\\AntraADT\\Infrastructure\\obj\\",
+      "outputPath": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -529,8 +529,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AntraADT\\ApllicationCore\\ApllicationCore.csproj": {
-              "projectPath": "D:\\AntraADT\\ApllicationCore\\ApllicationCore.csproj"
+            "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\ApllicationCore\\ApllicationCore.csproj": {
+              "projectPath": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\ApllicationCore\\ApllicationCore.csproj"
             }
           }
         }

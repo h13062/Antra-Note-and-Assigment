@@ -10,3 +10,15 @@ D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.dll
 D:\AntraADT\ApllicationCore\obj\Debug\net6.0\refint\ApllicationCore.dll
 D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.pdb
 D:\AntraADT\ApllicationCore\obj\Debug\net6.0\ref\ApllicationCore.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.deps.json
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\bin\Debug\net6.0\ApllicationCore.pdb
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.csproj.AssemblyReference.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.AssemblyInfoInputs.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.AssemblyInfo.cs
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.csproj.CoreCompileInputs.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\refint\ApllicationCore.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ApllicationCore.pdb
+D:\Antra-Note-and-Assigment\Week1-AdT\AntraADT\ApllicationCore\obj\Debug\net6.0\ref\ApllicationCore.dll

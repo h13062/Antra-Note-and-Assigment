@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AntraADT\\ApllicationCore\\ApllicationCore.csproj",
+      "projectUniqueName": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\ApllicationCore\\ApllicationCore.csproj",
       "projectName": "ApllicationCore",
-      "projectPath": "D:\\AntraADT\\ApllicationCore\\ApllicationCore.csproj",
+      "projectPath": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\ApllicationCore\\ApllicationCore.csproj",
       "packagesPath": "C:\\Users\\bgh15\\.nuget\\packages\\",
-      "outputPath": "D:\\AntraADT\\ApllicationCore\\obj\\",
+      "outputPath": "D:\\Antra-Note-and-Assigment\\Week1-AdT\\AntraADT\\ApllicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
