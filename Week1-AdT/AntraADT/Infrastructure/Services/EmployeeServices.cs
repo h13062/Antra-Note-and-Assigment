@@ -43,5 +43,20 @@ namespace Infrastructure.Services
             int id = Convert.ToInt32(Console.ReadLine());
             employeeRepository.DeleteById(id);
         }
+        public void GetByEmployeeID()
+        {
+            Console.Write("Enter Employee ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            Employees e = employeeRepository.GetById(id);
+            Console.WriteLine($"{e.Id} \t {e.FirstName} \t {e.LastName} \t {e.Salary} \t {e.DeptId}");
+        }
+        public void GetAllEmployee()
+        {
+            IEnumerable<Employees> employees = employeeRepository.GetAll();
+            foreach (var e in employees)
+            {
+                Console.WriteLine($"{e.Id} \t {e.FirstName} \t {e.LastName} \t {e.Salary} \t {e.DeptId}");
+            }
+        }
     }
 }

@@ -13,9 +13,10 @@ public class Program
         DepartmentServices d = new DepartmentServices();
         //d.AddDepartment();
         //d.DeleteDepartment();
-        d.GetAllDepartments();
+        //d.GetAllDepartments();
         EmployeeServices e = new EmployeeServices();
         //e.AddEmployee();
         //e.DeleteEmployee();
+        //e.GetAllEmployee();
     }
 }

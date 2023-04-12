@@ -19,7 +19,6 @@ namespace Infrastructure.Repositories
             _dbContext = new DapperDbContext(); //connection to database
         }
 
-
         public int DeleteById(int id)
         {
             using (IDbConnection conn = _dbContext.GetConnection())
