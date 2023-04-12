@@ -1,0 +1,11 @@
+Day03:
+CSS and javascript:
+	flex: change the screen with size- dynamic 
+	grid: tabular format with each row can be adjusted 
+	@media query: being dynamic with CSS if screen change, then the page will move together 
+	fit screen: 100% for picture 
+	focus on block and read other people css to be familiar with the language 
+	and learn these 3 topics:
+	css specificty
+	css boxmodel
+	css selectors
