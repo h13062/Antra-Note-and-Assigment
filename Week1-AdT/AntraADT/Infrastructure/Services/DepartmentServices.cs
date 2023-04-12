@@ -50,7 +50,7 @@ namespace Infrastructure.Services
         }
         public Departments GetDepartmentsById()
         {
-            Console.Write("Enter ID: ");
+            Console.Write("Enter Department ID: ");
             int id = Convert.ToInt32(Console.ReadLine());
             Departments departments = departmentRepository.GetById(id);
             Console.WriteLine($"{departments.ID} \t {departments.DeptName} \t {departments.Location}");

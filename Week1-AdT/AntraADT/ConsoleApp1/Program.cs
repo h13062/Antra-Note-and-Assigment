@@ -1,5 +1,6 @@
 ﻿//DAPPER tutorial 
 // add class library 
+using ConsoleApp1.Menu;
 using Infrastructure.Services;
 using System;
 using System.Linq;
@@ -10,13 +11,7 @@ public class Program
 {
     public static void Main()
     {
-        DepartmentServices d = new DepartmentServices();
-        //d.AddDepartment();
-        //d.DeleteDepartment();
-        //d.GetAllDepartments();
-        EmployeeServices e = new EmployeeServices();
-        //e.AddEmployee();
-        //e.DeleteEmployee();
-        //e.GetAllEmployee();
+        MenuSelection menu = new MenuSelection();
+        menu.run();
     }
 }

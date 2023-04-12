@@ -47,7 +47,8 @@ namespace Infrastructure.Repositories
 
         public int Update(Employees obj)
         {
-            throw new NotImplementedException();
+            IDbConnection conn = _dbContext.GetConnection();
+            return conn.Execute("Update Employees set FirstName = @FirstName,  LastName = @LastName,Salary = @Salary,DeptId = @DeptId Where Id = @Id", obj);
         }
     }
 }

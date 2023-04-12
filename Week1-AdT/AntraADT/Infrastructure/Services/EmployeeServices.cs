@@ -43,12 +43,13 @@ namespace Infrastructure.Services
             int id = Convert.ToInt32(Console.ReadLine());
             employeeRepository.DeleteById(id);
         }
-        public void GetByEmployeeID()
+        public Employees GetByEmployeeID()
         {
             Console.Write("Enter Employee ID: ");
             int id = Convert.ToInt32(Console.ReadLine());
             Employees e = employeeRepository.GetById(id);
             Console.WriteLine($"{e.Id} \t {e.FirstName} \t {e.LastName} \t {e.Salary} \t {e.DeptId}");
+            return e;
         }
         public void GetAllEmployee()
         {
@@ -57,6 +58,19 @@ namespace Infrastructure.Services
             {
                 Console.WriteLine($"{e.Id} \t {e.FirstName} \t {e.LastName} \t {e.Salary} \t {e.DeptId}");
             }
+        }
+        public void UpdateEmployee()
+        {
+            var e = GetByEmployeeID();
+            Console.Write("Enter new First name of Employee: ");
+            e.FirstName = Console.ReadLine();
+            Console.Write("Enter new Last name of Employee: ");
+            e.LastName = Console.ReadLine();
+            Console.Write("Enter new salary: ");
+            e.Salary = decimal.Parse(Console.ReadLine());
+            Console.Write("Enter the department ID: ");
+            e.DeptId = Convert.ToInt32(Console.ReadLine());
+            employeeRepository.Update(e);
         }
     }
 }
