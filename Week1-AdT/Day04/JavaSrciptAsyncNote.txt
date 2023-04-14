@@ -1,0 +1,51 @@
+ASYNC 
+Need to learn again about promise and callback in JavaSript
+async function fun(){
+	console.log("Hello");
+	let aTime = setTimeOut(()=>{
+		console.log("Currently Running");
+	},5000)
+	return 10; // result to 10 
+}
+fun().then((value) => {
+	console.log(value);
+}); // this become a promise if using the async 
+ JavaSript only run line at the time and not 
+ capable of running multi lines at the same time 
+ async await pause the sync process until other process wait 
+ 
+ async function timeoutExecution(){
+	console.log("Hello");
+	let aTime = setTimeOut(()=>{
+		console.log("Currently Running");
+	},5000)
+	return 10; // result to 10 
+}
+
+await timeoutExecution()
+.then((value) => {
+	console.log(value);
+})
+
+MVC:
+SQL -> entities ORM -> moel ( map eneties to other data type)
+Data structure object -> C# data object has data that comes from more than 1 enetity
+->Controller receives from service which got it information repositories
+-> View (cshtlm like html but you can input C# code)
+
+Data <-> Model <-> Controller <->View
+
+Dependecies injection is a design pattern to achieve loose coupling of code between objects and collaborators
+Instead of installing objects or using static references, we use the constructor injection to use our objects
+
+Upcasting, host and lifetime scope are needed
+
+static (global scope) => singleton
+transient => scope that change per implemetation 
+scoped <=> a scope that change per connection
+
+Transient and stuff 
+@ this next line of coder will be C# @{//these are c# code block and no html allow in here}
+staticfile 
+singleton and transient call ->try to understand
+and dependency injection
