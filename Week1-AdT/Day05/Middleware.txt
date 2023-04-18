@@ -1,2 +1,46 @@
-Middleware 
++Middleware 
+		app.Use(async (context, next) =>
+	{
+		await next();
+		await context.Response.WriteAsync($"\nStatus Code: {context.Response.StatusCode}");
+	});
 
+	app.MapGet("/", () => "Hello World");
+	app.UseHttpsRedirection();
+	app.UseStaticFiles();
+
+	app.UseRouting();
+
+	app.UseAuthorization();
+
+	app.MapControllerRoute(
+		name: "default",
+		pattern: "{controller=Home}/{action=Index}/{id?}");
+
+	app.Run(async(context) =>
+	{
+		await context.Response.WriteAsync("Terminal MiddleWare \n");
+	});
+	These are example of middleware
+
+	When use middleware, we use invoke method istead of constructor 
+
+
+	Kestrel is defaults- cross platform 
+	check day4 web application 1 for code of day 5
+	Day 4 github will be include later in this file
+
++HttpContext: hold request response and other Http method 
+
+Entity FramewrokCore
+	Dapper is not ideal becasue it is hard code the SQL to script
+	Dapper Micro ORM: Database first approach
+	Code First Approach
+	
+	Out of Memeory Source: IQueryable
+	LINQ -> TSQL
+	In memory source: IEnumerable
+	
+	IEnum vs List
+	Immdediate execution vs Delay Execution
+	

@@ -1,0 +1,28 @@
+Topic
+Tool allows add migration
+Async task and await
+fluid api and data notation:
+Include: allow you to join 
+ThenINclidue(): using prevoious inclusde to perform join
+Mapsin C#
+
++Async task and await
+
+	Using async and awaitto process paralleel 
+
+	await and async are used to write asynchronous code that allows you to perform long-running operations without blocking the main thread.
+
+	The async keyword is used to declare a method as asynchronous. An asynchronous method can have one or more await expressions, 
+	which indicate points at which the method can be suspended while it waits for the results of an asynchronous operation.
+
+	await pausing the program 
+
+	Task is an abstraction of the thread 
+
+	main trhead ---> asynchronous function-----------------
+							|
+							|
+							------------------> await 5 second--------->await 6 seconds---> long finish (take 11 second to be finish) background
+
+							async function
+

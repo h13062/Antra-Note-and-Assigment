@@ -1,0 +1,17 @@
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\Infrastructure.deps.json
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\Infrastructure.runtimeconfig.json
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\Infrastructure.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\Infrastructure.pdb
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\ApplicationCore.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\bin\Debug\net6.0\ApplicationCore.pdb
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.AssemblyReference.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfoInputs.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfo.cs
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\refint\Infrastructure.dll
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\Infrastructure.genruntimeconfig.cache
+D:\Antra-Note-and-Assigment\Week1-AdT\Day05\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
